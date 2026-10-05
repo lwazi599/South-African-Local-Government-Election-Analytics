@@ -1,0 +1,216 @@
+﻿CPT Election 2026 — DATA SOURCES
+Access date: 2026-10-05
+Metro: City of Cape Town (CPT), Western Cape
+Purpose: Real open datasets for municipal/local government election forecasting (Election Day 04 Nov 2026).
+No fabricated data. All election vote/turnout figures originate from the Electoral Commission of South Africa (IEC) or clearly cited IEC-derived mirrors.
+
+================================================================================
+A. IEC OFFICIAL MUNICIPAL ELECTION RESULTS (PRIMARY)
+Portal: https://results.elections.org.za/home/Downloads/ME-Results
+Event IDs used: 1091 = LGE 2021; 402 = LGE 2016; 197 = LGE 2011
+
+Suggested merge keys:
+  - municipality code: CPT
+  - ward_id / WardID: 19100001 .. 19100116 (2021/2016); 19100001 .. 19100111 (2011; 111 wards)
+  - election_year: 2011 | 2016 | 2021
+  - party_name (string) for party-level joins
+NOTE: Ward boundary/ID changes between election years require defensive alignment before compare/predict.
+
+--------------------------------------------------------------------------------
+A1) LGE 2021 — City of Cape Town
+Direct URLs (downloaded 2026-10-05):
+
+1) Municipality party vote summary (all parties; Ward/PR/Total ballots)
+   URL XLS: https://results.elections.org.za/home/LGEPublicReports/1091/Detailed%20Results/WP/CPT.xls
+   URL PDF: https://results.elections.org.za/home/LGEPublicReports/1091/Detailed%20Results/WP/CPT.pdf
+   Local: data/raw/iec_2021_lge_cpt_detailed_results_muni.xls|.pdf
+   Contains: Party Name; Ward Total Valid Votes; %; PR Total Valid Votes; %; Total (Ward+PR); DC40%; Total All Ballots.
+   Coverage: CPT metro aggregate (All Wards). HISTORICAL OBSERVATION.
+
+2) Ward-level detailed party results (ALL parties per ward) — 116 wards
+   URL pattern XLS: https://results.elections.org.za/home/LGEPublicReports/1091/Detailed%20Results/WP/CPT/{WARDID}.xls
+   Example: .../CPT/19100001.xls
+   Local folder: data/raw/iec_2021_lge_cpt_ward_detailed_results/ward_19100001.xls ... ward_19100116.xls
+   Contains per ward: Registered Population; MEC7 Votes; Party Name; Ward votes; PR votes; totals/% .
+   Coverage: wards 19100001–19100116 (116 wards). HISTORICAL OBSERVATION.
+   Merge key: ward_id = filename / metadata Ward field.
+
+3) Voter turnout + registered voters by ward
+   URL XLS: https://results.elections.org.za/home/LGEPublicReports/1091/Voter%20Turnout/WP/CPT.xls
+   URL PDF: https://results.elections.org.za/home/LGEPublicReports/1091/Voter%20Turnout/WP/CPT.pdf
+   Local: data/raw/iec_2021_lge_cpt_voter_turnout_wards.xls|.pdf
+   Contains: Ward; Registered Voters (audited VDs); MEC7 Votes; Voter Turnout; % Voter Turnout.
+   Metro totals in report: Registered Voters 1,973,708; Turnout votes 933,965; % Turnout 47.16%.
+   Coverage: all 116 CPT wards. HISTORICAL OBSERVATION.
+   Merge key: ward_id.
+
+4) Party Results (municipality / selected parties by ward)
+   URL XLS (muni/default): https://results.elections.org.za/home/LGEPublicReports/1091/Party%20Results/WP/CPT.xls
+   URL PDF: https://results.elections.org.za/home/LGEPublicReports/1091/Party%20Results/WP/CPT.pdf
+   Per-party ward tables pattern: .../Party%20Results/WP/CPT_{PartyID}.xls
+   Local: data/raw/iec_2021_lge_cpt_party_results_muni.xls|.pdf
+   Local folder: data/raw/iec_2021_lge_cpt_party_results_by_party/
+     party_52.xls = DEMOCRATIC ALLIANCE
+     party_7.xls  = AFRICAN NATIONAL CONGRESS
+     party_18.xls = AFRICAN CHRISTIAN DEMOCRATIC PARTY
+     party_4.xls  = VRYHEIDSFRONT PLUS
+     party_6.xls  = UNITED DEMOCRATIC MOVEMENT
+     party_3.xls  = INKATHA FREEDOM PARTY
+     party_8.xls  = PAN AFRICANIST CONGRESS OF AZANIA
+     party_45.xls = INDEPENDENT CIVIC ORGANISATION OF SOUTH AFRICA
+     party_1004.xls = (see sheet Party: field; downloaded under same pattern)
+   Contains: Ward; Total Valid Votes (Ward/PR); Valid Party Votes (Ward/PR); %; Overall Support.
+   NOTE: Full all-party ward votes are already in A1 item 2 (ward detailed XLS). These are convenience extracts for selected parties.
+   Merge key: ward_id + party_id/party_name.
+
+5) Seat calculation detail (council seats context; analytical only — not a governance prediction)
+   URL PDF: https://results.elections.org.za/home/LGEPublicReports/1091/Seat%20Calculation%20Detail/WP/CPT.pdf
+   Local: data/raw/iec_2021_lge_cpt_seat_calculation.pdf
+
+--------------------------------------------------------------------------------
+A2) LGE 2016 — City of Cape Town
+Base path: https://www.elections.org.za/content/LGEPublicReports/402/
+
+1) Municipality detailed party results
+   URL XLS: https://www.elections.org.za/content/LGEPublicReports/402/Detailed%20Results/WP/CPT.xls
+   URL PDF: https://www.elections.org.za/content/LGEPublicReports/402/Detailed%20Results/WP/CPT.pdf
+   Local: data/raw/iec_2016_lge_cpt_detailed_results_muni.xls|.pdf
+   Coverage: CPT All Wards aggregate. HISTORICAL OBSERVATION.
+
+2) Ward-level detailed party results — 116 wards
+   URL pattern: .../402/Detailed%20Results/WP/CPT/{WARDID}.xls
+   Local: data/raw/iec_2016_lge_cpt_ward_detailed_results/ (116 files)
+   Coverage: wards 19100001–19100116. HISTORICAL OBSERVATION.
+   Merge key: ward_id (align carefully vs 2021 — same ID scheme but verify boundary continuity).
+
+3) Voter turnout + registered voters by ward
+   URL XLS: https://www.elections.org.za/content/LGEPublicReports/402/Voter%20Turnout/WP/CPT.xls
+   URL PDF: https://www.elections.org.za/content/LGEPublicReports/402/Voter%20Turnout/WP/CPT.pdf
+   Local: data/raw/iec_2016_lge_cpt_voter_turnout_wards.xls|.pdf
+   Contains: Ward; Registered Voters; MEC7; Voter Turnout; % Turnout.
+   Coverage: 116 wards. HISTORICAL OBSERVATION.
+
+--------------------------------------------------------------------------------
+A3) LGE 2011 — City of Cape Town
+Base path: https://www.elections.org.za/content/LGEPublicReports/197/
+
+1) Municipality detailed party results
+   URL XLS: https://www.elections.org.za/content/LGEPublicReports/197/Detailed%20Results/WP/CPT.xls
+   URL PDF: https://www.elections.org.za/content/LGEPublicReports/197/Detailed%20Results/WP/CPT.pdf
+   Local: data/raw/iec_2011_lge_cpt_detailed_results_muni.xls|.pdf
+   Coverage: CPT All Wards aggregate. HISTORICAL OBSERVATION.
+
+2) Ward-level detailed party results — 111 wards
+   URL pattern: .../197/Detailed%20Results/WP/CPT/{WARDID}.xls
+   Local: data/raw/iec_2011_lge_cpt_ward_detailed_results/ (111 files; 19100001–19100111)
+   Coverage: 111 wards (CPT had 111 wards in 2011). HISTORICAL OBSERVATION.
+   Merge key: ward_id — DO NOT assume 1:1 continuity with 2016/2021 without boundary check.
+
+3) Voter turnout + registered voters by ward
+   URL XLS: https://www.elections.org.za/content/LGEPublicReports/197/Voter%20Turnout/WP/CPT.xls
+   URL PDF: https://www.elections.org.za/content/LGEPublicReports/197/Voter%20Turnout/WP/CPT.pdf
+   Local: data/raw/iec_2011_lge_cpt_voter_turnout_wards.xls|.pdf
+   Coverage: 111 wards. HISTORICAL OBSERVATION.
+
+================================================================================
+B. IEC-DERIVED / REPUTABLE MIRROR (OPEN ELECTIONS) — MERGEABLE WARD PARTY VOTES 2016
+Provenance: Open Elections GitLab project; README cites IEC municipal results source.
+
+1) Ward × party vote matrix (wide CSV)
+   URL: https://gitlab.com/open-elections/2016-south-african-municipal-elections/city-of-cape-town/-/raw/master/votes.csv
+   Project: https://gitlab.com/open-elections/2016-south-african-municipal-elections/city-of-cape-town
+   Source noted in README: http://www.elections.org.za/content/Elections/Municipal-elections-results/
+   Local: data/raw/openelections_2016_cpt_ward_party_votes.csv
+   Columns: constituency, da, anc, eff, acdp, ... independent
+   Coverage: Ward 1–116 (label style "Ward N"; map to IEC WardID 191000NN via N).
+   Label: IEC-DERIVED / curated mirror — verify against A2 ward XLS if needed.
+   Merge key: ward number ↔ ward_id (19100000 + N).
+
+2) Candidates metadata
+   URL: https://gitlab.com/open-elections/2016-south-african-municipal-elections/city-of-cape-town/-/raw/master/candidates.csv
+   Local: data/raw/openelections_2016_cpt_candidates.csv
+   Columns: party, person, slug, color, major, winner
+
+3) README provenance
+   URL: https://gitlab.com/open-elections/2016-south-african-municipal-elections/city-of-cape-town/-/raw/master/README.md
+   Local: data/raw/openelections_2016_cpt_README.md
+
+================================================================================
+C. STATS SA CENSUS 2022 MUNICIPAL INDICATORS (SUPPORTING MERGE DATASET)
+Primary Stats SA publication (PDF factsheet):
+  https://census.statssa.gov.za/assets/documents/2022/Census_2022_Municipal_factsheet-Web.pdf
+  Local: data/raw/statssa_census2022_municipal_factsheet.pdf
+
+Machine-readable municipal CSVs extracted from Stats SA "Census 2022 Provinces at a glance"
+(by afrith/census-2022-muni-stats; acknowledges Stats SA as original source):
+  Repo: https://github.com/afrith/census-2022-muni-stats
+  Access date: 2026-10-05
+
+1) Person indicators (all municipalities)
+   URL: https://raw.githubusercontent.com/afrith/census-2022-muni-stats/main/person-indicators-muni.csv
+   Local: data/raw/statssa_census2022_person_indicators_muni.csv
+   CPT extract: data/raw/statssa_census2022_person_indicators_CPT.csv
+   Columns include: prov_code, dc_code, muni_code, name, area_km2, pop 2011/2022, sex ratio, growth_rate...
+   Merge key: muni_code = CPT (metro-level join to election aggregates).
+
+2) Housing / services indicators
+   URL: https://raw.githubusercontent.com/afrith/census-2022-muni-stats/main/housing-info-muni.csv
+   Local: data/raw/statssa_census2022_housing_info_muni.csv
+   CPT extract: data/raw/statssa_census2022_housing_info_CPT.csv
+   Merge key: muni_code = CPT
+
+3) Age distribution
+   URL: https://raw.githubusercontent.com/afrith/census-2022-muni-stats/main/age-distribution-muni.csv
+   Local: data/raw/statssa_census2022_age_distribution_muni.csv
+   CPT extract: data/raw/statssa_census2022_age_distribution_CPT.csv
+   Merge key: muni_code = CPT
+
+Label: DERIVED from Stats SA published tables (not fabricated). Prefer citing Stats SA + this extraction repo.
+
+================================================================================
+D. CITY OF CAPE TOWN OPEN DATA — WARDS (GIS ATTRIBUTES)
+ArcGIS REST (City Maps):
+  https://citymaps.capetown.gov.za/agsext/rest/services/Search_Layers/SL_RGDB_WARD_TM/MapServer/0/query?where=1%3D1&outFields=OBJECTID,SL_WARD_KEY,WARD_NAME,SL_SUB_CNCL_KEY,WARD_YEAR&returnGeometry=false&f=json&resultRecordCount=2000
+Open Data map page: https://odp-cctegis.opendata.arcgis.com/maps/wards
+Local JSON: data/raw/cct_open_data_wards_attributes.json
+Local CSV:  data/raw/cct_open_data_wards_attributes.csv
+Columns: OBJECTID, SL_WARD_KEY, WARD_NAME, SL_SUB_CNCL_KEY, WARD_YEAR
+Coverage note: layer returned 116 features with WARD_YEAR=2016 (2009/2011/2016 ward eras exist in service description).
+Merge key: WARD_NAME (ward number) ↔ IEC ward serial; use cautiously with 2021 wards.
+Copyright/source: GIS Spatial Data Management Section, City of Cape Town & Municipal Demarcation Board.
+
+================================================================================
+E. DERIVED TIDY CSVs (FROM IEC XLS ABOVE — NOT NEW DATA)
+Created 2026-10-05 by parsing official IEC turnout XLS into flat CSV for modelling convenience.
+  data/raw/derived_iec_2021_cpt_voter_turnout_wards.csv  (116 rows)
+  data/raw/derived_iec_2016_cpt_voter_turnout_wards.csv  (116 rows)
+  data/raw/derived_iec_2011_cpt_voter_turnout_wards.csv  (111 rows)
+Columns: election_year, municipality, ward_id, registered_voters, mec7_votes, voter_turnout_votes, voter_turnout_rate, label_type
+Label: DERIVED FROM IEC HISTORICAL XLS (label_type=derived_from_iec_xls).
+
+================================================================================
+F. WHAT WAS OBTAINED — COVERAGE SUMMARY
+YES — Ward-level party votes:
+  2021: 116 ward XLS (all parties) + municipal summary
+  2016: 116 ward XLS (all parties) + municipal summary + Open Elections wide CSV
+  2011: 111 ward XLS (all parties) + municipal summary
+
+YES — Turnout / registration by ward:
+  2021, 2016, 2011 official IEC Voter Turnout XLS/PDF (+ derived tidy CSVs)
+
+YES — ≥2 related mergeable datasets:
+  IEC results (ward_id, CPT, year) × Stats SA Census 2022 municipal indicators (muni_code=CPT)
+  IEC turnout (ward_id) × IEC ward party results (ward_id)
+  Optional: CCT wards attributes (WARD_NAME) × IEC ward serial
+
+NOT obtained as bot-friendly bulk CSV from interactive ME-Results wizard UI (JS portal);
+equivalent official static LGEPublicReports XLS/PDF paths were used successfully (no fabrication).
+
+2011 note: fewer wards (111) than 2016/2021 (116) — treat as structural change, not missing downloads.
+
+================================================================================
+G. SUGGESTED MERGE RECIPE (FOR MODELLING)
+1) Build long table from ward detailed XLS: [election_year, municipality=CPT, ward_id, party_name, ward_votes, pr_votes, total_votes]
+2) Left-join turnout: on [election_year, ward_id] → registered_voters, turnout_votes, turnout_rate
+3) Left-join Census CPT row: on municipality/muni_code=CPT (metro features constant across wards; or use as metro controls)
+4) For cross-year ward compare: map 2011→2016→2021 with explicit boundary alignment strategy before forecasting 2026.

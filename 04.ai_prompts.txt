@@ -1,0 +1,203 @@
+AI PROMPTS SUBMITTED WITH EXAMINATION NOTEBOOK
+Student project: 2026 South African Local Government Elections Analytics
+Metropolitan municipality: City of Cape Town (CPT)
+Examination date context: 05 October 2026
+Prediction target: 04 November 2026
+Tool used: Cursor AI assistant (open-web / open-book permitted)
+Purpose of this file: record AI prompts that show professional learning intention,
+technical reasoning, and exam-brief compliance (not casual chat).
+
+NOTE:
+Prompts below are curated for assessment. They reflect requests for explanation,
+method justification, life-cycle discipline, data integrity, and reproducible delivery.
+All final analysis decisions, code typing in Google Colab, cleaning choices,
+model interpretation, and dashboard content remain the student's responsibility.
+
+
+================================================================================
+1. UNDERSTANDING THE EXAM BRIEF AND RULES
+================================================================================
+
+Prompt:
+"Process and keep in record the mandatory exam requirements: complete data science
+and machine learning solution for one South African metropolitan municipality;
+use only publicly available information on or before 05 October 2026; credible
+traceable datasets with source links; Jupyter/Colab notebook with Markdown
+decisions; do not fabricate observations; present 04 November 2026 outputs as
+model estimates with uncertainty, assumptions and limitations; a justified
+insufficient-data conclusion is better than an unsupported prediction; submit
+notebook, sources, visualisations, model outputs and Streamlit files; submit AI
+prompts with the notebook."
+
+Learning intention:
+Clarify mandatory constraints before any modelling so the solution stays ethical,
+reproducible and aligned to the marking rules.
+
+
+Prompt:
+"Record the theme: 2026 South African Local Government Elections analytics.
+I must develop an evidence-based election solution for one metro. This is not
+political opinion. Quality of data, modelling decisions, evaluation and
+interpretation is more important than any forecast outcome."
+
+Learning intention:
+Separate technical forecasting from political opinion and prioritise method quality.
+
+
+Prompt:
+"Record the integrated election forecasting requirements: largest party vote
+total/share; analytical coalition note without saying who will govern; leading
+party in three justified wards with geographically defensive comparisons;
+vote share/total for each relevant party; projected turnout as votes and rate;
+distinguish historical observations, derived estimates, and predictions for
+04 November 2026."
+
+Learning intention:
+Map every required deliverable before choosing datasets and models.
+
+
+Prompt:
+"Use this rubric for marking so we cover all assessment areas: Dataset selection
+and justification (12), Data understanding and pre-processing (18), EDA (30),
+ML implementation and evaluation (52), Dashboard/UI (20), Code organisation and
+documentation (13), Complexity analysis (5). Total 150."
+
+Learning intention:
+Plan evidence against the official rubric rather than coding randomly.
+
+
+================================================================================
+2. DATASET STRATEGY AND DATA INTEGRITY
+================================================================================
+
+Prompt:
+"Help me select City of Cape Town (CPT) and find real open datasets with direct
+source links. Datasets must not be fictional. Prefer at least two related
+mergeable datasets from credible sources such as IEC and Stats SA."
+
+Learning intention:
+Meet dataset justification marks with traceable open data and a clear merge key.
+
+
+Prompt:
+"Explain why the IEC 2021 detailed results Excel file still has value even though
+pandas shows many NaN values at the top of the sheet."
+
+Learning intention:
+Understand report-style Excel layouts versus true missing election data before
+rejecting an official source.
+
+
+Prompt:
+"After merging turnout and party votes, DA votes in a ward can exceed turnout
+votes. Explain what that means for analysis and how to treat it defensibly."
+
+Learning intention:
+Avoid false conclusions from mismatched ballot definitions; document data
+semantics correctly.
+
+
+================================================================================
+3. MACHINE LEARNING LIFE CYCLE AND METHOD
+================================================================================
+
+Prompt:
+"Follow the ML project life cycle in order: problem definition, data collection,
+cleaning, EDA, feature engineering, model building, evaluation, Streamlit
+deployment, monitoring/complexity notes. Before every code cell, give a short
+Markdown explanation."
+
+Learning intention:
+Produce a readable, examiner-traceable notebook with documented decisions.
+
+
+Prompt:
+"Data cleaning is the most important preparation step. Go thorough: dtypes,
+missing values, duplicates, outliers, merge-key cleaning, ward boundary
+alignment, and document each decision."
+
+Learning intention:
+Maximise pre-processing marks and prevent leakage/misaligned geography.
+
+
+Prompt:
+"Be careful with graphs. Only suggest chart types that match the analytical
+question and explain why that chart is appropriate."
+
+Learning intention:
+Avoid incorrect visualisations and strengthen EDA marks.
+
+
+Prompt:
+"Build a turnout model using 2016 to 2021 ward patterns, evaluate with MAE,
+RMSE and R², then produce 04 November 2026 turnout estimates with uncertainty."
+
+Learning intention:
+Implement and evaluate a regression model properly, then label forecasts as
+estimates.
+
+
+Prompt:
+"Explain my turnout metrics in simple terms and whether the model performance
+is positive enough to use for 2026 estimates."
+
+Learning intention:
+Interpret evaluation metrics instead of only reporting numbers.
+
+
+Prompt:
+"Help estimate party shares for 2026 using cleaned 2016 and 2021 historical
+shares, with clear assumptions, limitations and uncertainty bands. Largest
+party must be reported as model output, not as who will govern."
+
+Learning intention:
+Satisfy party-share and coalition-note requirements without overclaiming.
+
+
+Prompt:
+"Justify selection of three wards for ward-level prediction and keep comparisons
+geographically defensive where ward counts differ across years."
+
+Learning intention:
+Meet the three-ward requirement with transparent selection criteria.
+
+
+================================================================================
+4. COMMUNICATION, DASHBOARD AND SUBMISSION QUALITY
+================================================================================
+
+Prompt:
+"Upgrade the Streamlit dashboard so it professionally communicates principal
+historical analysis, model outputs and uncertainty clearly for the 20 UI marks."
+
+Learning intention:
+Align the dashboard with the exact wording of the dashboard assessment criterion.
+
+
+Prompt:
+"Provide a short complexity analysis suitable for the notebook covering time
+complexity, space complexity and scalability of the pipeline."
+
+Learning intention:
+Complete the complexity section with technical reasoning, not filler text.
+
+
+Prompt:
+"I need an AI prompts file that is professional and shows learning intention
+rather than exporting every casual message."
+
+Learning intention:
+Submit a responsible AI-use record focused on academic/technical prompts.
+
+
+================================================================================
+5. STUDENT DECLARATION
+================================================================================
+
+I used AI assistance to understand requirements, plan the life cycle, locate
+open data sources, debug parsing issues, and improve explanations/dashboard
+structure. I personally ran the Google Colab notebook workflow, made cleaning
+and modelling decisions, interpreted outputs with uncertainty/limitations, and
+take responsibility for the submitted solution.
+
+End of AI prompts record.
