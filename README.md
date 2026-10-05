@@ -18,3 +18,6 @@ Evidence-based ML solution for City of Cape Town (CPT) local government election
 - `iec_2021_lge_cpt_detailed_results_muni.xls`
 
 2026 outputs are model estimates with uncertainty, not governance predictions.
+Run dashboard
+bash
+streamlit run 02.Streamlit_Dashboard_app.py
